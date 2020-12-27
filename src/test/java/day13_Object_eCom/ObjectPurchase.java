@@ -19,11 +19,11 @@ public class ObjectPurchase {
 	String xpathEmail = "//div[@class='content']/input[@name='email']";
 	String xpathPass = "//div[@class='content']/input[@name='password']";
 	String xpathLoginbtn = "//input[@class='button']";
-	String xpathFirstProduct ="//a[contains(text(),'SareeShop Embroidered Multi-Coloured Half And Half')]";
+	String xpathFirstProduct ="//a[contains(text(),'SareeShop Embroidered Multi-Coloured Half And Half Geor..')]";
 	String xpathAddCart = "//input[@id='button-cart']";
 	String xpathItems = "//span[@id='cart-total']";
 	String xpathViewCart = "//a[contains(text(),'View Cart')]";
-	String xpathCheckout = "//a[contains(text(),'Checkout')]";
+	String xpathCheckout = "//div[@class='right']/a[contains(text(),'Checkout')]";
 	String xpathContinueStep2 = "//input[@id='button-payment-address']";
 	String xpathContinueStep3 = "//input[@id='button-shipping-address']";
 	String xpathContinueStep4 = "//input[@id='button-shipping-method']";

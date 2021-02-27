@@ -4,6 +4,7 @@ import java.util.Random;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -24,6 +25,22 @@ public class Register {
 	
 	ObjectLogin objlogin;
 	
+	//data
+	String Firstname = "Mi";
+	String Lastname = "Truong";
+	String Email = mail;
+	String Telephone = "1234567890";
+	String Fax = "2244";
+	String Company = "ABC";
+	String CompanyId = "123";
+	String Address1 = "110 Cong Hoa Tan Binh";
+	String Address2 = "220 To Hien Thanh, Quan 10";
+	String City = "HCM";
+	String PostCode = "110001";
+	String Country = "Viet Nam";
+	String Region = "3780";
+	String PassConfirm = "truonghami2201";
+	
 	@BeforeTest
 	public void setUp() {
 		System.out.println("Use Chrome driver");
@@ -33,27 +50,32 @@ public class Register {
 		driver.manage().window().maximize();	
 	}
 	
+	@AfterTest
+	public void tearDown() {
+		driver.quit();
+	}
+	
 	//----------register success + login success
 	@Test
 	public void TC001_registerSuccess() throws InterruptedException {
 		objRegister = new ObjectRegister(driver);
 		objRegister.clickCreateAccount();
-		objRegister.inputFirstname("Mi");
-		objRegister.inputLastname("Truong");
+		objRegister.inputFirstname(Firstname);
+		objRegister.inputLastname(Lastname);
 		objRegister.inputEmail(mail);
-		objRegister.inputTelephone("1234567890");
-		objRegister.inputFax("2244");
-		objRegister.inputCompany("ABC");
-		objRegister.inputCompanyId("123");
-		objRegister.inputAddress1("110 Cong Hoa Tan Binh");
-		objRegister.inputAddress2("220 To Hien Thanh, Quan 10");
-		objRegister.inputCity("HCM");
-		objRegister.inputPostCode("110001");
-		objRegister.selectCountry("Viet Nam");
+		objRegister.inputTelephone(Telephone);
+		objRegister.inputFax(Fax);
+		objRegister.inputCompany(Company);
+		objRegister.inputCompanyId(CompanyId);
+		objRegister.inputAddress1(Address1);
+		objRegister.inputAddress2(Address2);
+		objRegister.inputCity(City);
+		objRegister.inputPostCode(PostCode);
+		objRegister.selectCountry(Country);
 		Thread.sleep(3000);
-		objRegister.selectRegion("3780");
+		objRegister.selectRegion(Region);
 		objRegister.inputPass(pass);
-		objRegister.inputPassConfirm("truonghami2201");
+		objRegister.inputPassConfirm(PassConfirm);
 		objRegister.radioYes();
 		objRegister.checkPolicy();
 		objRegister.clickContinue();
@@ -70,11 +92,15 @@ public class Register {
 		softass.assertEquals(driver.getTitle(), "My Account");
 	}
 	
-	//@Test
+	@Test
 	public void TC002_registerUnSuccess() {
 		objRegister = new ObjectRegister(driver);
+		driver.get(url);
+		objRegister.logout();
 		objRegister.clickCreateAccount();
 		objRegister.clickContinue();
 		objRegister.verifyErrorFirstname();
 	}
+	
+
 }

@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -33,6 +34,11 @@ public class Purchase {
 		driver = new ChromeDriver();
 		driver.get(url);
 		driver.manage().window().maximize();	
+	}
+	
+	@AfterTest
+	public void tearDown() {
+		driver.quit();
 	}
 	
 	@Test

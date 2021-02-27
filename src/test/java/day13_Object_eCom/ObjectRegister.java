@@ -49,6 +49,9 @@ public class ObjectRegister {
 	//--------------Error Firstname------------
 	String xpathErrorFirstname = "//span[contains(text(),'First Name must be between 1 and 32 characters!')]";
 	
+	//-------------Logout--------
+	String xpathLogout = "//a[contains(text(),'Logout')]";
+	
 	//=================method==================
 	//-------------Create an account----------
 	public void clickCreateAccount() {
@@ -142,6 +145,11 @@ public class ObjectRegister {
 		System.out.println(errorfirstname);
 		softass.assertEquals(errorfirstname, "First Name must be between 1 and 32 characters!");
 		softass.assertEquals(driver.getTitle(), "Register Account");
+	}
+	
+	//---------------Logout----------
+	public void logout() {
+		driver.findElement(By.xpath(xpathLogout)).click();
 	}
 
 }

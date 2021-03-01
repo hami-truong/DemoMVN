@@ -1,8 +1,8 @@
 package day13_Object_eCom;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.asserts.SoftAssert;
 
@@ -18,130 +18,194 @@ public class ObjectRegister {
 	
 	//====================element====================
 	//-------------Create an account-----------
-	String xpathCreateAccount = "//div[@class='login pull-left']/a[contains(text(),'create an account')]";
+	/*String xpathCreateAccount = "//div[@class='login pull-left']/a[contains(text(),'create an account')]";*/
+	@FindBy(xpath = "//div[@class='login pull-left']/a[contains(text(),'create an account')]")
+	private WebElement xpathCreateAccount;
 	//------------Your Personal Details-----------
-	String xpathFirstName = "//input[@name='firstname']";
-	String xpathLastName = "//input[@name='lastname']";
-	String xpathEmail = "//td/input[@name='email']";
-	String xpathTelephone = "//td/input[@name='telephone']";
-	String xpathFax = "//td/input[@name='fax']";
+	//String xpathFirstName = "//input[@name='firstname']";
+	@FindBy(xpath = "//input[@name='firstname']")
+	private WebElement xpathFirstName;
+	
+	//String xpathLastName = "//input[@name='lastname']";	
+	@FindBy(xpath = "//td/input[@name='email']\"")
+	private WebElement xpathLastName;
+	
+	//String xpathEmail = "//td/input[@name='email']";
+	@FindBy(xpath = "//td/input[@name='email']")
+	private WebElement xpathEmail;
+	
+	//String xpathTelephone = "//td/input[@name='telephone']";
+	@FindBy(xpath = "//td/input[@name='telephone']")
+	private WebElement xpathTelephone;
+	
+	//String xpathFax = "//td/input[@name='fax']";
+	@FindBy(xpath = "//td/input[@name='fax']")
+	private WebElement xpathFax;
 	
 	//------------Your Address-------------
-	String xpathCompany = "//input[@name='company']";
-	String xpathCompanyId = "//input[@name='company_id']";
-	String xpathAddress1 = "//input[@name='address_1']";
-	String xpathAddress2 = "//input[@name='address_2']";
-	String xpathCity = "//input[@name='city']";
-	String xpathPostCode = "//input[@name='postcode']";
-	String xpathCountry = "//select[@name='country_id']";
-	String xpathRegion = "//select[@name='zone_id']";
+	//String xpathCompany = "//input[@name='company']";
+	@FindBy(xpath = "//input[@name='company']")
+	private WebElement xpathCompany;
+	
+	//String xpathCompanyId = "//input[@name='company_id']";
+	@FindBy(xpath = "//input[@name='company_id']")
+	private WebElement xpathCompanyId;
+	
+	//String xpathAddress1 = "//input[@name='address_1']";
+	@FindBy(xpath = "//input[@name='address_1']")
+	private WebElement xpathAddress1;
+	
+	//String xpathAddress2 = "//input[@name='address_2']";
+	@FindBy(xpath = "//input[@name='address_2']")
+	private WebElement xpathAddress2;
+	
+	//String xpathCity = "//input[@name='city']";
+	@FindBy(xpath = "//input[@name='city']")
+	private WebElement xpathCity;
+	
+	//String xpathPostCode = "//input[@name='postcode']";
+	@FindBy(xpath = "//input[@name='postcode']")
+	private WebElement xpathPostCode;
+	
+	//String xpathCountry = "//select[@name='country_id']";
+	@FindBy(xpath = "//select[@name='country_id']")
+	private WebElement xpathCountry;
+	
+	//String xpathRegion = "//select[@name='zone_id']";
+	@FindBy(xpath = "//select[@name='zone_id']")
+	private WebElement xpathRegion;
+	
 	
 	//-------------Your Password------------
-	String xpathPassword = "//input[@name='password']";
-	String xpathPasswordConfirm = "//input[@name='confirm']";
+	//String xpathPassword = "//input[@name='password']";
+	@FindBy(xpath = "//input[@name='password']")
+	private WebElement xpathPassword;
+	
+	//String xpathPasswordConfirm = "//input[@name='confirm']";
+	@FindBy(xpath = "//input[@name='confirm']")
+	private WebElement xpathPasswordConfirm;
+	
 	
 	//------------Newsletter----------
-	String xpathYes = "//td[contains(text(),'Subscribe:')]/following-sibling::td/input[@value='1']";
-	String xpathNo = "//td[contains(text(),'Subscribe:')]/following-sibling::td/input[@value='0']";
-	String xpathCheckBox = "//input[@name='agree']";
-	String xpathContinuebtn = "//input[@class='button']";
+	//String xpathYes = "//td[contains(text(),'Subscribe:')]/following-sibling::td/input[@value='1']";
+	@FindBy(xpath = "//td[contains(text(),'Subscribe:')]/following-sibling::td/input[@value='1']")
+	private WebElement xpathYes;
+	
+	//String xpathNo = "//td[contains(text(),'Subscribe:')]/following-sibling::td/input[@value='0']";
+	@FindBy(xpath = "//td[contains(text(),'Subscribe:')]/following-sibling::td/input[@value='0']")
+	private WebElement xpathNo;
+	
+	//String xpathCheckBox = "//input[@name='agree']";
+	@FindBy(xpath = "//input[@name='agree']")
+	private WebElement xpathCheckBox;
+	
+	//String xpathContinuebtn = "//input[@class='button']";
+	@FindBy(xpath = "//input[@class='button']")
+	private WebElement xpathContinuebtn;
+	
 	
 	//--------------Error Firstname------------
-	String xpathErrorFirstname = "//span[contains(text(),'First Name must be between 1 and 32 characters!')]";
+	//String xpathErrorFirstname = "//span[contains(text(),'First Name must be between 1 and 32 characters!')]";
+	@FindBy(xpath = "//span[contains(text(),'First Name must be between 1 and 32 characters!')]")
+	private WebElement xpathErrorFirstname;
+	
 	
 	//-------------Logout--------
-	String xpathLogout = "//a[contains(text(),'Logout')]";
+	//String xpathLogout = "//a[contains(text(),'Logout')]";
+	@FindBy(xpath = "//a[contains(text(),'Logout')]")
+	private WebElement xpathLogout;
+	
 	
 	//=================method==================
 	//-------------Create an account----------
 	public void clickCreateAccount() {
-		driver.findElement(By.xpath(xpathCreateAccount)).click();
+		xpathCreateAccount.click();
 	}
 	//----------Your Personal Details-------
 	public void inputFirstname(String firstname) {
-		driver.findElement(By.xpath(xpathFirstName)).sendKeys(firstname);
+		xpathFirstName.sendKeys(firstname);
 	}
 	
 	public void inputLastname(String lastname) {
-		driver.findElement(By.xpath(xpathLastName)).sendKeys(lastname);
+		xpathLastName.sendKeys(lastname);
 	}
 	
 	public void inputEmail(String email) {
-		driver.findElement(By.xpath(xpathEmail)).sendKeys(email);
+		xpathEmail.sendKeys(email);
 	}
 	
 	public void inputTelephone(String telephone) {
-		driver.findElement(By.xpath(xpathTelephone)).sendKeys(telephone);
+		xpathTelephone.sendKeys(telephone);
 	}
 	
 	public void inputFax(String fax) {
-		driver.findElement(By.xpath(xpathFax)).sendKeys(fax);
+		xpathFax.sendKeys(fax);
 	}
 	
 	//----------Your Address-----
 	public void inputCompany(String company) {
-		driver.findElement(By.xpath(xpathCompany)).sendKeys(company);
+		xpathCompany.sendKeys(company);
 	}
 	
 	public void inputCompanyId(String company_id) {
-		driver.findElement(By.xpath(xpathCompanyId)).sendKeys(company_id);
+		xpathCompanyId.sendKeys(company_id);
 	}
 	
 	
 	public void inputAddress1(String address1) {
-		driver.findElement(By.xpath(xpathAddress1)).sendKeys(address1);
+		xpathAddress1.sendKeys(address1);
 	}
 	
 	public void inputAddress2(String address2) {
-		driver.findElement(By.xpath(xpathAddress2)).sendKeys(address2);
+		xpathAddress2.sendKeys(address2);
 	}
 	
 	
 	public void inputPostCode(String postcode) {
-		driver.findElement(By.xpath(xpathPostCode)).sendKeys(postcode);
+		xpathPostCode.sendKeys(postcode);
 	}
 	
 	public void inputCity(String city) {
-		driver.findElement(By.xpath(xpathCity)).sendKeys(city);
+		xpathCity.sendKeys(city);
 	}
 	
 	public void selectCountry(String country) {
-		WebElement selectCountry = driver.findElement(By.xpath(xpathCountry));
+		WebElement selectCountry = xpathCountry;
 		Select sl = new Select(selectCountry);
 		sl.selectByVisibleText(country);
 	}
 	
 	public void selectRegion(String region) {
-		WebElement selectRegion = driver.findElement(By.xpath(xpathRegion));
+		WebElement selectRegion =xpathRegion;
 		Select sl = new Select(selectRegion);
 		sl.selectByValue(region);
 	}
 	
 	//-------------------Your Password-----------------
 	public void inputPass(String pass) {
-		driver.findElement(By.xpath(xpathPassword)).sendKeys(pass);
+		xpathPassword.sendKeys(pass);
 	}
 	
 	public void inputPassConfirm(String passConfirm) {
-		driver.findElement(By.xpath(xpathPasswordConfirm)).sendKeys(passConfirm);
+		xpathPasswordConfirm.sendKeys(passConfirm);
 	}
 	
 	//-----------------Newsletter-------------
 	public void radioYes() {
-		driver.findElement(By.xpath(xpathYes)).click();
+		xpathYes.click();
 	}
 	
 	public void checkPolicy() {
-		driver.findElement(By.xpath(xpathCheckBox)).click();
+		xpathCheckBox.click();
 	}
 	
 	public void clickContinue() {
-		driver.findElement(By.xpath(xpathContinuebtn)).click();
+		xpathContinuebtn.click();
 	}
 	
 	//----------------Error Firstname------------
 	public void verifyErrorFirstname() {
-		String errorfirstname = driver.findElement(By.xpath(xpathErrorFirstname)).getText();
+		String errorfirstname = xpathErrorFirstname.getText();
 		System.out.println(errorfirstname);
 		softass.assertEquals(errorfirstname, "First Name must be between 1 and 32 characters!");
 		softass.assertEquals(driver.getTitle(), "Register Account");
@@ -149,7 +213,7 @@ public class ObjectRegister {
 	
 	//---------------Logout----------
 	public void logout() {
-		driver.findElement(By.xpath(xpathLogout)).click();
+		xpathLogout.click();
 	}
 
 }

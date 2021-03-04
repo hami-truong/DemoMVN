@@ -3,6 +3,7 @@ package day13_Object_eCom;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.asserts.SoftAssert;
 
@@ -12,8 +13,10 @@ public class ObjectRegister {
 	SoftAssert softass = new SoftAssert();
 	
 	//=============contructor-================
-	public ObjectRegister(WebDriver globalDriver) {
-		driver = globalDriver;
+	public ObjectRegister(WebDriver driver) {
+		//driver = globalDriver;
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
 	}
 	
 	//====================element====================
@@ -21,13 +24,14 @@ public class ObjectRegister {
 	/*String xpathCreateAccount = "//div[@class='login pull-left']/a[contains(text(),'create an account')]";*/
 	@FindBy(xpath = "//div[@class='login pull-left']/a[contains(text(),'create an account')]")
 	private WebElement xpathCreateAccount;
+	
 	//------------Your Personal Details-----------
 	//String xpathFirstName = "//input[@name='firstname']";
 	@FindBy(xpath = "//input[@name='firstname']")
 	private WebElement xpathFirstName;
 	
 	//String xpathLastName = "//input[@name='lastname']";	
-	@FindBy(xpath = "//td/input[@name='email']\"")
+	@FindBy(xpath = "//td/input[@name='email']")
 	private WebElement xpathLastName;
 	
 	//String xpathEmail = "//td/input[@name='email']";
@@ -117,6 +121,10 @@ public class ObjectRegister {
 	
 	
 	//=================method==================
+	//------------login---------
+	public void openLogin(String url) {
+		driver.get(url);
+	}
 	//-------------Create an account----------
 	public void clickCreateAccount() {
 		xpathCreateAccount.click();

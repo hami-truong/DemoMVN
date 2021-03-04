@@ -5,10 +5,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 import day13_Object_eCom.ObjectLogin;
-import day13_Object_eCom.ObjectRegister;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Login extends Register{

@@ -14,6 +14,7 @@ import day13_Object_eCom.ObjectRegister;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Register {
+
 	WebDriver driver;
 	String url = "https://www.ecomdeveloper.com/designs/demoshop/index.php?route=common/home";
 	ObjectRegister objRegister;
@@ -22,7 +23,7 @@ public class Register {
 	String mail = "truonghami" + x + "@gmail.com";
 	String pass = "truonghami2201";
 	SoftAssert softass = new SoftAssert();
-	
+
 	ObjectLogin objlogin;
 	
 	//data
@@ -46,8 +47,9 @@ public class Register {
 		System.out.println("Use Chrome driver");
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
-		driver.get(url);
+		
 		driver.manage().window().maximize();	
+
 	}
 	
 	@AfterTest
@@ -55,10 +57,15 @@ public class Register {
 		driver.quit();
 	}
 	
+	
 	//----------register success + login success
 	@Test
 	public void TC001_registerSuccess() throws InterruptedException {
+		
+		driver.navigate().refresh();
 		objRegister = new ObjectRegister(driver);
+		objRegister.openLogin(url);
+
 		objRegister.clickCreateAccount();
 		objRegister.inputFirstname(Firstname);
 		objRegister.inputLastname(Lastname);
@@ -95,7 +102,8 @@ public class Register {
 	@Test
 	public void TC002_registerUnSuccess() {
 		objRegister = new ObjectRegister(driver);
-		driver.get(url);
+		objRegister.openLogin(url);
+
 		objRegister.logout();
 		objRegister.clickCreateAccount();
 		objRegister.clickContinue();
